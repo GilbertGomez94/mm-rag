@@ -9,3 +9,7 @@ install: virtual-env
 run-app:
 	uvicorn serverr.appmm:app --reload
 	chainlit run chat/main.py --port 8081 -w
+
+condainstall:
+	conda create --name python312 python=3.12 -y
+	conda activate python312
