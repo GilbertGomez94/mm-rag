@@ -3,9 +3,12 @@
 Antes que nada, hablemos de lo que necesitan instalar previo al inicio del taller.
 
 - Instalar [Python](https://phoenixnap.com/kb/how-to-install-python-3-ubuntu) >= 3.10 (no se ha probado en versiones inferiores)
-- Instalar [Visual Studio Code](https://code.visualstudio.com/download)(o el editor que código para Python que más te guste)
+- Instalar [Visual Studio Code](https://code.visualstudio.com/download)(o el editor que código para Python que más te guste) y allí extensiones para trabajar junto con [jupyter notebooks](https://code.visualstudio.com/docs/datascience/jupyter-notebooks).
 - Instalar [Poppler](https://pdf2image.readthedocs.io/en/latest/installation.html)
 - Instalar [Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html)
+- Instalar [Ollama](https://ollama.com/download/mac). Lo usaremos para descargar 2 modelos:
+    - ollama pull llama3 (llm)
+    - ollama pull llava (lmm)
 - Instalar Make en su OS (Lo pueden no instalar y simplemente ir al Makefile e ir ejecutando los comandos uno a uno, simplemente es para facilitar la ejecución de comandos) [MacOS](https://formulae.brew.sh/formula/make) [Ubuntu](https://www.drupaladicto.com/snippet/como-instalar-make-en-ubuntu)
 - Ejecutar el comando `install` que se encuentra dentro del Makefile. En caso de que prefieran trabajar con Anaconda para las versiones de python, deben usar el comando `condainstall`. Pueden usar [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation), sin embargo no lo he usado tanto, queda a discreción de cada quién, no dejo un Make para esta librería.
 
