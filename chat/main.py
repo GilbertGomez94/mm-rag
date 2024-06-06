@@ -5,15 +5,19 @@ import base64
 import os
 
 
-URL = "http://localhost:8000/recipe-final"
+URL = "http://localhost:8000/recipe"
 
 IMAGES_PATH = os.path.join("/home/gilbert/Documentos/experiments/mm-rag/", "chat/images")
 
-def call_langchain(input: str):
-    data = {"question": input}
+def call_langchain(question: str, images: list):
+    data = {"question": question, "images": images}
     response = requests.post(url=URL, data=json.dumps(data))
     return response
 
+
+def encode_image(image_path):
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode('utf-8')
 
 @cl.on_message
 async def on_message(msg: cl.Message):
@@ -23,7 +27,13 @@ async def on_message(msg: cl.Message):
 
     # Processing images exclusively
 
-    response = call_langchain(msg.content)
+
+    encoded_images = []
+    for file in msg.elements:
+        if "image" in file.mime:
+            encoded_images.append(encode_image(image_path=file.path))
+    print(encoded_images[0])
+    response = call_langchain(msg.content, encoded_images)
     images = response.json().get("response").get("context").get("images")
     front_images = []
     images_names = []
@@ -41,9 +51,12 @@ async def on_message(msg: cl.Message):
             elements=front_images
             ).send()
         return
+    
+    # print(encoded_images)
+        
     # images = [file for file in msg.elements if "image" in file.mime]
 
-    # # Read the first image
+    # Read the first image
     # with open(images[0].path, "r") as f:
     #     pass
 
