@@ -2,7 +2,6 @@ import base64
 import binascii
 from langchain_experimental.open_clip import OpenCLIPEmbeddings
 from langchain.vectorstores import FAISS
-from langchain.chat_models import ChatOllama
 
 from langchain.schema.messages import HumanMessage
 
@@ -12,16 +11,13 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from pathlib import Path
 
 
-
-
-#TODO: Make this a command on init project using pwd or something else....
-SAVE_PATH = Path(__file__).resolve().parent
+SAVE_PATH = Path(__file__).resolve().parent.parent
 
 
 embeddings = OpenCLIPEmbeddings()
 vectorstore = FAISS.load_local(os.path.join(SAVE_PATH, "vectordb/faiss_index"), embeddings,allow_dangerous_deserialization=True)
 
-retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
+retriever = vectorstore.as_retriever(search_kwargs={"k": 20})
 
 def get_documents(docs):
     """Get documents from vectordb retriever"""
@@ -66,9 +62,13 @@ def img_prompt_func(data_dict: dict):
     text_message = {
         "type": "text",
         "text": (
-            "Eres un experto en cocina de invierno, tu tarea es analizar e interpretar imagenes PERO NUNCA vas a dar respuestas haciendo referencia a una imagen, solo la información util "
-            "Además de las imágenes recibirás texto como contexto. Ambos serán retornados desde una base de datos vectorial "
-            "basada en el input del usuario. Por favor usa tu extenso conocimiento y habilidades analiticas para prover "
+            "Eres un experto en recetas de invierno y en el análisis de contenido de imágenes. \n "
+            "Tu tarea es proporcionar una receta detallada basada en el ingrediente mencionado en la pregunta, "
+            "y además analizar el contenido de la imagen proporcionada sin describirla explícitamente. \n "
+            "En caso de no tener la información de la receta, debes responder 'No tengo información para responder a tu pregunta' "
+            "A continuación se te dará un ingrediente y una imagen relacionada. \n "
+            "Debes combinar esta información para ofrecer una receta que incluya el ingrediente mencionado. \n" 
+            "Por favor usa tu extenso conocimiento y habilidades analiticas para prover "
             "una respuesta precisa que contenga lo siguiente:\n"
             "- En qué consiste la o las recetas.\n\n"
             f"input del usuario: {final_question}\n\n"
@@ -95,7 +95,6 @@ def input_image_prompt(images: list):
     Join the context into a single string
     """
     model = ChatGoogleGenerativeAI(model="gemini-pro-vision", temperature=0, max_tokens=1024)
-    # model = ChatOllama(temperature=0, model="llava", max_tokens=1024)
 
     response = ""
     for image in images:

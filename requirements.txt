@@ -6,7 +6,6 @@ langchain-community==0.2.1
 langchain-core==0.2.1
 langchain-experimental==0.0.59
 langchain-google-genai
-langchain-openai==0.1.7
 langchain-text-splitters==0.2.0
 langdetect==1.0.9
 langserve==0.2.0
@@ -18,5 +17,4 @@ pillow
 pydantic
 tiktoken
 torch
-unstructured[pdf]
 uvicorn==0.25.0

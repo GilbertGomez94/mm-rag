@@ -3,11 +3,15 @@ import requests
 import json
 import base64
 import os
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 URL = "http://localhost:8000/recipe"
 
-IMAGES_PATH = os.path.join("/home/gilbert/Documentos/experiments/mm-rag/", "chat/images")
+
+IMAGES_PATH = os.path.join(BASE_DIR, "chat/images")
+
 
 def call_langchain(question: str, images: list):
     data = {"question": question, "images": images}
