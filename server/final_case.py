@@ -9,10 +9,13 @@ from langchain.schema.messages import HumanMessage
 import os
 
 from langchain_google_genai import ChatGoogleGenerativeAI
+from pathlib import Path
+
+
 
 
 #TODO: Make this a command on init project using pwd or something else....
-SAVE_PATH=os.getenv("PROJECT_PATH", "/home/gilbert/Documentos/experiments/mm-rag/")
+SAVE_PATH = Path(__file__).resolve().parent
 
 
 embeddings = OpenCLIPEmbeddings()
