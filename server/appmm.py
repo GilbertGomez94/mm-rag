@@ -3,7 +3,6 @@ from operator import itemgetter
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough, RunnableParallel
-from langchain.chat_models import ChatOllama
 
 from fastapi.responses import JSONResponse
 
@@ -35,7 +34,6 @@ async def get_answer(request: Request):
     question = data.get("question")
     images = data.get("images")
 
-    # model = ChatOllama(temperature=0, model="llava", max_tokens=1024)
     model = ChatGoogleGenerativeAI(model="gemini-pro-vision", temperature=0, max_tokens=1024)
     
     # RAG pipeline
