@@ -10,6 +10,9 @@ Antes que nada, hablemos de lo que necesitan instalar previo al inicio del talle
 - Ejecutar el comando `make install` que se encuentra dentro del Makefile. En caso de que prefieran trabajar con Anaconda para las versiones de python, deben usar el comando `make condainstall`. Pueden usar [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation), sin embargo no lo he usado tanto, queda a discreción de cada quién, no dejo un Make para esta librería.
 
 
+# Link al Notebook:
+https://drive.google.com/file/d/1M_7eZQ8dCUyAlJPIDv5Zbtjl49u8Pv11/view?usp=sharing
+
 # En caso de errores:
 
 En caso de tener el siguiente error `ERROR: Could not build wheels for pycocotools, which is required to install pyproject.toml-based projects`
