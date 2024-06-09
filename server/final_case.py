@@ -17,7 +17,7 @@ SAVE_PATH = Path(__file__).resolve().parent.parent
 embeddings = OpenCLIPEmbeddings()
 vectorstore = FAISS.load_local(os.path.join(SAVE_PATH, "vectordb/faiss_index"), embeddings,allow_dangerous_deserialization=True)
 
-retriever = vectorstore.as_retriever(search_kwargs={"k": 20})
+retriever = vectorstore.as_retriever(search_kwargs={"k": 10, "score_threshold": 0.7})
 
 def get_documents(docs):
     """Get documents from vectordb retriever"""
