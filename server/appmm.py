@@ -8,7 +8,7 @@ from langchain_core.runnables import RunnableLambda, RunnablePassthrough, Runnab
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from server.final_case import PROMPT, get_documents, retriever, prepare_prompt_data, image_chain
+from server.controller import PROMPT, get_documents, retriever, prepare_prompt_data, image_chain
 
 
 # Initialize FastAPI app
