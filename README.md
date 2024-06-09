@@ -13,6 +13,16 @@ Antes que nada, hablemos de lo que necesitan instalar previo al inicio del talle
 # Link al Notebook:
 https://drive.google.com/file/d/1M_7eZQ8dCUyAlJPIDv5Zbtjl49u8Pv11/view?usp=sharing
 
+# Pasos a seguir durante el taller:
+
+- Abrir el link con el notebook y seguis sus instrucciones.
+- Abriremos una terminal y vamos a levantar nuestro ambiente virtual de acuerdo al gusto e instalaremos las dependencias.
+- En nuestro repo, vamos a levantar dos aplicativos, chainlit y nuestra API, para ello vamos a abrir dos terminales(Debemos asegurarnos de que tenemos nuestro ambiente virtual activo para cada una de las terminales):
+    - En la terminal de nuestra API vamos a ejecutar el siguiente comando: export GOOGLE_API_KEY=<<api que nos da Gemini>> y posterior ejecutar el comando `make run-server`
+    - En la terminal de chainlit simplemente vamos a ejecutar el comando `make run-chat-app`
+
+¡A jugar!
+
 # En caso de errores:
 
 En caso de tener el siguiente error `ERROR: Could not build wheels for pycocotools, which is required to install pyproject.toml-based projects`

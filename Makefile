@@ -13,3 +13,6 @@ run-server:
 condainstall:
 	pip install --upgrade pip
 	pip install -r requirements.txt
+
+activate-env:
+	source .venv/bin/activate
