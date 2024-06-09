@@ -1,0 +1,14 @@
+faiss-cpu==1.8.0
+langchain==0.2.1
+langchain-community==0.2.1
+langchain-core==0.2.1
+langchain-experimental==0.0.59
+langchain-google-genai
+langchain-text-splitters==0.2.0
+langdetect==1.0.9
+open_clip_torch
+pillow
+pydantic
+tiktoken
+torch
+unstructured[pdf]
